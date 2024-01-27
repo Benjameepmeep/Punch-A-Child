@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
@@ -21,7 +22,6 @@ public class KidTrajectoryScript : MonoBehaviour
     
     private float _punchForce;
     private float _bounceMagnitudeThreshold;
-    private Vector2 _initialVelocityVector;
     private Vector2 _currentVelocityVector;
 
     private bool _isFlying;
@@ -53,15 +53,21 @@ public class KidTrajectoryScript : MonoBehaviour
         }
     }
 
-    private Vector2 ConvertForceAndDirectionToVelocity()
+    private IEnumerator ConvertToVelocityAndLaunch(float punchForce, float launchAngle)
     {
-        return default;
-    }
-    
-    
-    private void LaunchTrajectory(Vector2 velocity)
-    {
+        /* var kidTransform = transform;
+        var kidDirection = kidTransform.forward;
+        var elevationAxis = kidTransform.right;
+         var releaseVector = Quaternion.AngleAxis(launchAngle, elevationAxis) * kidDirection;
+                _kidRigidbody2D.velocity = releaseVector * punchForce;*/
         
+        float velx = punchForce * Mathf.Cos(launchAngle * Mathf.Deg2Rad);
+        float vely = punchForce * Mathf.Sin(launchAngle * Mathf.Deg2Rad);
+        
+        // Figure out set delay for punch to execute.
+        yield return new WaitForSeconds(2);
+        
+        _kidRigidbody2D.velocity = new Vector2(velx, vely);
     }
 
     private void BounceTrajectory(Vector2 velocity)

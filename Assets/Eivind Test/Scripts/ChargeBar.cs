@@ -48,23 +48,35 @@ public class ChargeBar : MonoBehaviour
 
    private IEnumerator ChargeDecrease()
    {
+       StopCoroutine(ChargeIncrease());
+       
        yield return new WaitForSeconds(0.01f);
-       while (currentCharge > minCharge)
+       while (currentCharge >= minCharge)
        {
             currentCharge -= maxCharge / 100;
             chargeBar.value = currentCharge;
             yield return chargeTick;
        }
+       if (currentCharge >= maxCharge)
+       {
+           StartCoroutine(ChargeIncrease());
+       }
    }
    
    private IEnumerator ChargeIncrease()
    {
+       StopCoroutine(ChargeDecrease());
+       
        yield return new WaitForSeconds(0.01f);
-       while (currentCharge < maxCharge)
+       while (currentCharge <= maxCharge)
        {
            currentCharge += maxCharge / 100;
            chargeBar.value = currentCharge;
            yield return chargeTick;
+       }
+       if (currentCharge >= maxCharge)
+       {
+           StartCoroutine(ChargeDecrease());
        }
    }
 }
