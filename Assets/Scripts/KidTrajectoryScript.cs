@@ -16,25 +16,28 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private PlayerInput.PlayerInput _playerInput;
     private GameObject _mainCamera;
+    private AnimationCurve _animationCurve;
     private Rigidbody2D _kidRigidbody2D;
     private LayerMask _layerGround;
     
     [SerializeField] private float punchForce;
     [SerializeField] private float angle;
     private Vector2 _currentVelocityVector;
+    private float _timer;
 
     private bool _isFlying;
     private bool _hasLanded;
 
     private void Awake()
     {
+        _playerInput = GetComponentInParent<PlayerInput.PlayerInput>();
         _kidRigidbody2D = GetComponent<Rigidbody2D>();
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
     
     private void Update()
     {
-        if (_playerInput)
+        if (PlayerInput.PlayerInput.LockInBar)
         {
             _kidRigidbody2D.WakeUp();
             StartCoroutine(ConvertToVelocityAndLaunch(punchForce, angle));
@@ -43,6 +46,10 @@ public class KidTrajectoryScript : MonoBehaviour
         if (KidHasLanded())
         {
             // Play animations, and leave kid lying in the dirt. + Count score / points.
+            if (PlayerInput.PlayerInput.ResetLevel)
+            {
+                // TODO: Leave current kid laying in the dirt, reset all bools, and prepare camera and kids for new punch.
+            }
         }
     }
 
@@ -74,8 +81,9 @@ public class KidTrajectoryScript : MonoBehaviour
         
         // Figure out set delay for punch to execute.
         yield return new WaitForSeconds(2);
-        
+        _isFlying = true;
         _kidRigidbody2D.velocity = new Vector2(velocityX, velocityY);
+        _playerInput.SwitchInputToKidFlying();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -91,7 +99,15 @@ public class KidTrajectoryScript : MonoBehaviour
     private bool KidHasLanded()
     {
         _kidRigidbody2D.velocity = Vector2.zero;
+        StartCoroutine(InitiateResetControlsAfterDelay());
         return _isFlying = false;
     }
-  
+
+    private IEnumerator InitiateResetControlsAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        _playerInput.SwitchInputToLevelReset();
+        yield break;
+    }
+    
 }

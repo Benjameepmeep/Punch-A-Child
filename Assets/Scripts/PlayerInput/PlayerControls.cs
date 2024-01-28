@@ -28,18 +28,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""dffc9193-a1bb-4b7b-8d89-f48e5e531e9d"",
             ""actions"": [
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Lock-In"",
                     ""type"": ""Button"",
                     ""id"": ""3d10c1ad-4805-46b7-a809-751ef4ac8298"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Escape"",
-                    ""type"": ""Button"",
-                    ""id"": ""5a79d55b-93f7-4a8a-bc91-dc09425c1baf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -54,7 +45,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""Lock-In"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -65,18 +56,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9b74cfa3-f173-4f34-a66f-b91b21e59461"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Escape"",
+                    ""action"": ""Lock-In"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -87,7 +67,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""4754c791-75ef-4d3b-ad74-a556af906b91"",
             ""actions"": [
                 {
-                    ""name"": ""UseItem"",
+                    ""name"": ""Use Item"",
                     ""type"": ""Button"",
                     ""id"": ""00c4ca28-0224-4bf3-8623-04ee168462f0"",
                     ""expectedControlType"": ""Button"",
@@ -113,26 +93,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseItem"",
+                    ""action"": ""Use Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""510bd2a4-b1fb-47a8-b2ec-6ecb41351f4d"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fast-Forward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""60c8ed3f-5c92-449f-a4cb-ffd90254b428"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Fast-Forward"",
@@ -146,7 +115,46 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseItem"",
+                    ""action"": ""Use Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""ResetStage"",
+            ""id"": ""1ad9202d-ec63-4c42-8728-4e474dfa5eb9"",
+            ""actions"": [
+                {
+                    ""name"": ""ResetButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""05f8bfe7-2e85-4b5b-80ee-6e53f310d0a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f4addf31-78d0-41b7-91a3-c35693d8e8e3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c43cf52-5229-44bf-b2de-25bf2d3ab749"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -157,12 +165,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 }");
         // Launch
         m_Launch = asset.FindActionMap("Launch", throwIfNotFound: true);
-        m_Launch_Interact = m_Launch.FindAction("Interact", throwIfNotFound: true);
-        m_Launch_Escape = m_Launch.FindAction("Escape", throwIfNotFound: true);
+        m_Launch_LockIn = m_Launch.FindAction("Lock-In", throwIfNotFound: true);
         // KidFlying
         m_KidFlying = asset.FindActionMap("KidFlying", throwIfNotFound: true);
-        m_KidFlying_UseItem = m_KidFlying.FindAction("UseItem", throwIfNotFound: true);
+        m_KidFlying_UseItem = m_KidFlying.FindAction("Use Item", throwIfNotFound: true);
         m_KidFlying_FastForward = m_KidFlying.FindAction("Fast-Forward", throwIfNotFound: true);
+        // ResetStage
+        m_ResetStage = asset.FindActionMap("ResetStage", throwIfNotFound: true);
+        m_ResetStage_ResetButton = m_ResetStage.FindAction("ResetButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,14 +234,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Launch
     private readonly InputActionMap m_Launch;
     private List<ILaunchActions> m_LaunchActionsCallbackInterfaces = new List<ILaunchActions>();
-    private readonly InputAction m_Launch_Interact;
-    private readonly InputAction m_Launch_Escape;
+    private readonly InputAction m_Launch_LockIn;
     public struct LaunchActions
     {
         private @PlayerControls m_Wrapper;
         public LaunchActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Interact => m_Wrapper.m_Launch_Interact;
-        public InputAction @Escape => m_Wrapper.m_Launch_Escape;
+        public InputAction @LockIn => m_Wrapper.m_Launch_LockIn;
         public InputActionMap Get() { return m_Wrapper.m_Launch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,22 +249,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_LaunchActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_LaunchActionsCallbackInterfaces.Add(instance);
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
-            @Escape.started += instance.OnEscape;
-            @Escape.performed += instance.OnEscape;
-            @Escape.canceled += instance.OnEscape;
+            @LockIn.started += instance.OnLockIn;
+            @LockIn.performed += instance.OnLockIn;
+            @LockIn.canceled += instance.OnLockIn;
         }
 
         private void UnregisterCallbacks(ILaunchActions instance)
         {
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
-            @Escape.started -= instance.OnEscape;
-            @Escape.performed -= instance.OnEscape;
-            @Escape.canceled -= instance.OnEscape;
+            @LockIn.started -= instance.OnLockIn;
+            @LockIn.performed -= instance.OnLockIn;
+            @LockIn.canceled -= instance.OnLockIn;
         }
 
         public void RemoveCallbacks(ILaunchActions instance)
@@ -328,14 +330,63 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public KidFlyingActions @KidFlying => new KidFlyingActions(this);
+
+    // ResetStage
+    private readonly InputActionMap m_ResetStage;
+    private List<IResetStageActions> m_ResetStageActionsCallbackInterfaces = new List<IResetStageActions>();
+    private readonly InputAction m_ResetStage_ResetButton;
+    public struct ResetStageActions
+    {
+        private @PlayerControls m_Wrapper;
+        public ResetStageActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ResetButton => m_Wrapper.m_ResetStage_ResetButton;
+        public InputActionMap Get() { return m_Wrapper.m_ResetStage; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ResetStageActions set) { return set.Get(); }
+        public void AddCallbacks(IResetStageActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ResetStageActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ResetStageActionsCallbackInterfaces.Add(instance);
+            @ResetButton.started += instance.OnResetButton;
+            @ResetButton.performed += instance.OnResetButton;
+            @ResetButton.canceled += instance.OnResetButton;
+        }
+
+        private void UnregisterCallbacks(IResetStageActions instance)
+        {
+            @ResetButton.started -= instance.OnResetButton;
+            @ResetButton.performed -= instance.OnResetButton;
+            @ResetButton.canceled -= instance.OnResetButton;
+        }
+
+        public void RemoveCallbacks(IResetStageActions instance)
+        {
+            if (m_Wrapper.m_ResetStageActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IResetStageActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ResetStageActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ResetStageActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ResetStageActions @ResetStage => new ResetStageActions(this);
     public interface ILaunchActions
     {
-        void OnInteract(InputAction.CallbackContext context);
-        void OnEscape(InputAction.CallbackContext context);
+        void OnLockIn(InputAction.CallbackContext context);
     }
     public interface IKidFlyingActions
     {
         void OnUseItem(InputAction.CallbackContext context);
         void OnFastForward(InputAction.CallbackContext context);
+    }
+    public interface IResetStageActions
+    {
+        void OnResetButton(InputAction.CallbackContext context);
     }
 }

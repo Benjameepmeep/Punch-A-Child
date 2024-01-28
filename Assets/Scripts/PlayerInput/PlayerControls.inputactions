@@ -6,18 +6,9 @@
             "id": "dffc9193-a1bb-4b7b-8d89-f48e5e531e9d",
             "actions": [
                 {
-                    "name": "Interact",
+                    "name": "Lock-In",
                     "type": "Button",
                     "id": "3d10c1ad-4805-46b7-a809-751ef4ac8298",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Escape",
-                    "type": "Button",
-                    "id": "5a79d55b-93f7-4a8a-bc91-dc09425c1baf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -32,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Lock-In",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -43,18 +34,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9b74cfa3-f173-4f34-a66f-b91b21e59461",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Escape",
+                    "action": "Lock-In",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -65,7 +45,7 @@
             "id": "4754c791-75ef-4d3b-ad74-a556af906b91",
             "actions": [
                 {
-                    "name": "UseItem",
+                    "name": "Use Item",
                     "type": "Button",
                     "id": "00c4ca28-0224-4bf3-8623-04ee168462f0",
                     "expectedControlType": "Button",
@@ -91,26 +71,15 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseItem",
+                    "action": "Use Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "510bd2a4-b1fb-47a8-b2ec-6ecb41351f4d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fast-Forward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "60c8ed3f-5c92-449f-a4cb-ffd90254b428",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Fast-Forward",
@@ -124,7 +93,46 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseItem",
+                    "action": "Use Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ResetStage",
+            "id": "1ad9202d-ec63-4c42-8728-4e474dfa5eb9",
+            "actions": [
+                {
+                    "name": "ResetButton",
+                    "type": "Button",
+                    "id": "05f8bfe7-2e85-4b5b-80ee-6e53f310d0a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f4addf31-78d0-41b7-91a3-c35693d8e8e3",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c43cf52-5229-44bf-b2de-25bf2d3ab749",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
