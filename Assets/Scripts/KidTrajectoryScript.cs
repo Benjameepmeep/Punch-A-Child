@@ -18,6 +18,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private PlayerInput.PlayerInput _playerInput;
     private GameObject _mainCamera;
     private Animator _playerAnim;
+    private Animator _kidAnim;
     private AnimationCurve _animationCurve;
     private Rigidbody2D _kidRigidbody2D;
     private LayerMask _layerGround;
@@ -28,11 +29,12 @@ public class KidTrajectoryScript : MonoBehaviour
     private float _timer;
 
     private bool _isFlying;
-    private bool _hasLanded;
+    private bool _kidHasLanded;
 
     private void Awake()
     {
         _playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        _kidAnim = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput.PlayerInput>();
         _kidRigidbody2D = GetComponent<Rigidbody2D>();
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -52,15 +54,13 @@ public class KidTrajectoryScript : MonoBehaviour
             StartCoroutine(ConvertToVelocityAndLaunch(randomPunchForce, randomAngle));
         }
         
-        if (_hasLanded)
+        if (_kidHasLanded)
         {
-            StartCoroutine(InitiateResetControlsAfterDelay());
             _isFlying = false;
             
-            // Play animations, and leave kid lying in the dirt. + Count score / points.
-            if (PlayerInput.PlayerInput.ResetLevel)
+            if (PlayerInput.PlayerInput.LockInBar)
             {
-                // TODO: Leave current kid laying in the dirt, reset all bools, and prepare camera and kids for new punch.
+                //TODO: LoadNextScene
             }
         }
     }
@@ -68,6 +68,11 @@ public class KidTrajectoryScript : MonoBehaviour
     private void FixedUpdate()
     {
         if (!_isFlying) { return; }
+
+        if (_kidRigidbody2D.velocityY >= 0)
+        {
+            
+        }
     }
     
     private IEnumerator ConvertToVelocityAndLaunch(float punch, float launchAngle)
@@ -102,12 +107,6 @@ public class KidTrajectoryScript : MonoBehaviour
             KidHasLanded(); 
         }*/
     }
-
-    /*private bool KidHasLanded()
-    {
-        StartCoroutine(InitiateResetControlsAfterDelay());
-        return _isFlying = false;
-    }*/
 
     private IEnumerator InitiateResetControlsAfterDelay()
     {
