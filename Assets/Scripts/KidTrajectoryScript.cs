@@ -14,6 +14,7 @@ public class KidTrajectoryScript : MonoBehaviour
     // TODO: Count traveled distance from startPos.
     // TODO: Add SFX and VFX to kid during different stages of launch (Idle, currently punched, flying, bouncing, landing).
 
+    private PlayerInput.PlayerInput _playerInput;
     private GameObject _mainCamera;
     private Rigidbody2D _kidRigidbody2D;
     private LayerMask _layerGround;
@@ -33,8 +34,9 @@ public class KidTrajectoryScript : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (_playerInput)
         {
+            _kidRigidbody2D.WakeUp();
             StartCoroutine(ConvertToVelocityAndLaunch(punchForce, angle));
         }
 
