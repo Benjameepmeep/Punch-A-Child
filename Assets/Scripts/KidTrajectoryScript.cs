@@ -18,6 +18,7 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private SceneManager _sceneManager;
     private PlayerInput.PlayerInput _playerInput;
+    private AudioSource _audioSource;
     private Animator _playerAnim;
     private Animator _kidAnim;
     private AnimationCurve _animationCurve;
@@ -37,6 +38,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private void Awake()
     {
         _sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>();
+        _audioSource = GetComponent<AudioSource>();
         _playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         _kidAnim = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput.PlayerInput>();
@@ -57,7 +59,7 @@ public class KidTrajectoryScript : MonoBehaviour
         }
         if (PlayerInput.PlayerInput.LockInBar)
         {
-            var randomPunchForce = Random.Range(5, 50);
+            var randomPunchForce = Random.Range(10, 50);
             var randomAngle = Random.Range(25, 65);
             StartCoroutine(ConvertToVelocityAndLaunch(randomPunchForce, randomAngle));
         }
@@ -107,6 +109,8 @@ public class KidTrajectoryScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!CompareTag("Ground")) return;
+        
+        
 
         if (_facingForwardOnGround)
         { 
