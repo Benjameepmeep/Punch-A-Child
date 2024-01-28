@@ -31,6 +31,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private float _timer;
 
     private bool _isFlying;
+    private bool _punched;
     private bool _facingForwardOnGround;
     private bool _kidHasLanded;
     private bool _nextLevelCanBeLoaded = false;
@@ -38,7 +39,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private void Awake()
     {
         _sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>();
-        _audioSource = GetComponent<AudioSource>();
+        /*_audioSource = GetComponent<AudioSource>();*/
         _playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         _kidAnim = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput.PlayerInput>();
@@ -94,6 +95,12 @@ public class KidTrajectoryScript : MonoBehaviour
         
         // Figure out set delay for punch to execute.
         yield return new WaitForSeconds(1.4f);
+        /*if (!_punched)
+        {
+            _audioSource.PlayOneShot(_audioSource.clip);
+            _punched = true;
+        }*/
+        
         Debug.Log("Launching");
         // _kidRigidbody2D.velocity = releaseVector * punchForce;
         
