@@ -53,31 +53,11 @@ namespace PlayerInput
         private void Update()
         {
             LockInBar = _controls.Launch.LockIn.triggered;
-            for (int i = 0; i < 2; i++)
-            {
-                if (LockInBar)
-                {
-                    i++;
-                }
-            }
             
             UseItem = _controls.KidFlying.UseItem.triggered;
             FastForward = _controls.KidFlying.FastForward.triggered;
             
             ResetLevel = _controls.ResetStage.ResetButton.triggered;
-            
-            if (LockInBar)
-            {
-                StartCoroutine(LockBarMeters());
-            }
         }
-
-        private IEnumerator LockBarMeters()
-        {
-            SwitchInputToKidFlying();
-            yield return new WaitUntil(() => LevelHasBeenReset);
-            SwitchInputToLaunch();
-        }
-        
     }
 }
