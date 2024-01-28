@@ -17,7 +17,11 @@ namespace PlayerInput
             _controls.Launch.Disable();
             _controls.KidFlying.Enable();
         }
-        public void Switch
+
+        public void Switch()
+        {
+            
+        }
         
         private bool _interact;
     
