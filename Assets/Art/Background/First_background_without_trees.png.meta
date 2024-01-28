@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a57b0bc07a9f7bd49bd68d7ac0a0e456
+guid: a53a9c72408eca348ad37056f01b5659
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8292079600102965897
-    second: tann_0
+      213: -197424382234451446
+    second: First_background_without_trees_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tann_0
+      name: First_background_without_trees_0
       rect:
         serializedVersion: 2
-        x: 1188
-        y: 274
-        width: 99
-        height: 127
+        x: 0
+        y: 0
+        width: 3508
+        height: 857
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77d799a798d9cec80800000000000000
-      internalID: -8292079600102965897
+      spriteID: a022ae2029b924df0800000000000000
+      internalID: -197424382234451446
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      tann_0: -8292079600102965897
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
