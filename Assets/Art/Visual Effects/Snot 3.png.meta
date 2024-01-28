@@ -215,7 +215,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Snot 3_0: 5017305979791446864
+      Snot 3_1: -8516203228352318268
+      Snot 3_2: 4719468343704432397
+      Snot 3_3: 6268643452889725849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

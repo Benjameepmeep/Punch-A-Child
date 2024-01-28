@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mountain_png_0: -6101808208383126171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

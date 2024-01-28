@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hill_and_forest_0: -2301671988844185001
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
