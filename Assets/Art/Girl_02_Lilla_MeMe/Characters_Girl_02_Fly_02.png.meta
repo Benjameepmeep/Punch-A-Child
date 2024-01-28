@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e632f86d741b5fe46ae42cb53715da38
+guid: aea6a14874b499440b0b45a85e9b1dd0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7963206504630421782
-    second: Petty Pernille 2_0
+      213: -3537252147180819100
+    second: Characters_Girl_02_Fly_02_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,85 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Petty Pernille 2_0
+      name: Characters_Girl_02_Fly_02_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 1191
-        width: 9
-        height: 13
+        x: 946
+        y: 330
+        width: 782
+        height: 551
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae67c6affd10d7190800000000000000
-      internalID: -7963206504630421782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Petty Pernille 2_1
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 93
-        width: 518
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c918ea097cfaff344804adc1fdb74145
-      internalID: 376614512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Petty Pernille Flying1
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 588
-        width: 677
-        height: 534
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb5d05fde1bab7e4d8e843c1672a0a9f
-      internalID: 2139952534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Petty Pernille Grounded Backward
-      rect:
-        serializedVersion: 2
-        x: 914
-        y: 148
-        width: 1250
-        height: 321
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5725681d66761f5478b232983ff5255d
-      internalID: -500429873
+      spriteID: 46dac4ec9e729eec0800000000000000
+      internalID: -3537252147180819100
       vertices: []
       indices: 
       edges: []
@@ -199,7 +136,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8a561821c4b68bf49be04c9122d2dac9
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -207,10 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Petty Pernille 2_0: -7963206504630421782
-      Petty Pernille 2_1: 376614512
-      Petty Pernille Flying1: 2139952534
-      Petty Pernille Grounded Backward: -500429873
+      Characters_Girl_02_Fly_02_0: -3537252147180819100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

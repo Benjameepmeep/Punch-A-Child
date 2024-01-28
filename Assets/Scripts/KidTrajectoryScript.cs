@@ -29,6 +29,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private float _timer;
 
     private bool _isFlying;
+    private bool _facingForwardOnGround;
     private bool _kidHasLanded;
 
     private void Awake()
@@ -43,6 +44,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private void Start()
     {
         _playerAnim.Play("PlayerIdle");
+        _kidAnim.Play("PettyPete");
     }
 
     private void Update()
@@ -95,6 +97,8 @@ public class KidTrajectoryScript : MonoBehaviour
         _kidRigidbody2D.velocity = new Vector2(velocityX, velocityY);
         Debug.Log("Kid Velocity: " + _kidRigidbody2D.velocity);
         _kidRigidbody2D.AddForce(_kidRigidbody2D.velocity, ForceMode2D.Force);
+        
+        _kidAnim.Play("PettyPeteFlying");
         _isFlying = true;
         _playerInput.SwitchInputToKidFlying();
     }
@@ -102,6 +106,19 @@ public class KidTrajectoryScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!CompareTag("Ground")) return;
+
+        if (_facingForwardOnGround)
+        { 
+            _kidAnim.Play("PettyPeteGroundedForward");
+            _facingForwardOnGround = false;
+        }
+        else
+        {
+            _kidAnim.Play("PettyPeteGroundedBackward");
+            _facingForwardOnGround = true;
+        }
+        
+        
         /*if (_kidRigidbody2D.velocity.x < 1f)
         {
             KidHasLanded(); 
