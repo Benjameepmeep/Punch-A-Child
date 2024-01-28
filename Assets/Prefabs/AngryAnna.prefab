@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7437422382947187069}
   m_Layer: 0
   m_Name: AngryAnna
-  m_TagString: Untagged
+  m_TagString: Kid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 216086821594028282}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ebfeffe54ad72a04e8df9b3b119487db, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8742819973cc5ba4cb2fb19dcd7c084c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -36,6 +36,7 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private void Awake()
     {
+        _sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>();
         _playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         _kidAnim = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput.PlayerInput>();
@@ -50,7 +51,7 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private void Update()
     {
-        if (_nextLevelCanBeLoaded)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             _sceneManager.Loadlevel();
         }
@@ -119,7 +120,7 @@ public class KidTrajectoryScript : MonoBehaviour
         }
         
         
-        if (_kidRigidbody2D.velocity.x < 0.01f)
+        if (_kidRigidbody2D.velocity.x < 0.1f)
         {
             _nextLevelCanBeLoaded = true;
         }
