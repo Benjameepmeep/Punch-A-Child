@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 
@@ -15,6 +16,7 @@ public class KidTrajectoryScript : MonoBehaviour
     // TODO: Count traveled distance from startPos.
     // TODO: Add SFX and VFX to kid during different stages of launch (Idle, currently punched, flying, bouncing, landing).
 
+    private SceneManager _sceneManager;
     private PlayerInput.PlayerInput _playerInput;
     private Animator _playerAnim;
     private Animator _kidAnim;
@@ -30,6 +32,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private bool _isFlying;
     private bool _facingForwardOnGround;
     private bool _kidHasLanded;
+    private bool _nextLevelCanBeLoaded = false;
 
     private void Awake()
     {
@@ -47,6 +50,10 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private void Update()
     {
+        if (_nextLevelCanBeLoaded)
+        {
+            _sceneManager.Loadlevel();
+        }
         if (PlayerInput.PlayerInput.LockInBar)
         {
             var randomPunchForce = Random.Range(5, 50);
@@ -57,11 +64,6 @@ public class KidTrajectoryScript : MonoBehaviour
         if (_kidHasLanded)
         {
             _isFlying = false;
-            
-            if (PlayerInput.PlayerInput.LockInBar)
-            {
-                //TODO: LoadNextScene
-            }
         }
     }
 
@@ -117,10 +119,10 @@ public class KidTrajectoryScript : MonoBehaviour
         }
         
         
-        /*if (_kidRigidbody2D.velocity.x < 1f)
+        if (_kidRigidbody2D.velocity.x < 0.01f)
         {
-            KidHasLanded(); 
-        }*/
+            _nextLevelCanBeLoaded = true;
+        }
     }
 
     private IEnumerator InitiateResetControlsAfterDelay()
