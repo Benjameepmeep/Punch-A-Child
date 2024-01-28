@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class MovementControllerTest : MonoBehaviour
@@ -16,6 +15,6 @@ public class MovementControllerTest : MonoBehaviour
     void Update()
     {
         move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        transform.Translate(move * speed * Time.deltaTime);
+        //transform.Translate(move * speed * Time.deltaTime);
     }
 }

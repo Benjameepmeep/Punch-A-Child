@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerLast : MonoBehaviour
 {
-    public void Loadlevel(string level)
+    /*public void Loadlevel(string level)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.LoadScene("Kid1"));
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.LoadScene());
 
-    }
+    }*/
     
     /*public void LoadSceneByName(string sceneName)
     {
