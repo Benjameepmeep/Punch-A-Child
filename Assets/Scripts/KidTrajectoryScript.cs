@@ -14,37 +14,43 @@ public class KidTrajectoryScript : MonoBehaviour
     // TODO: Count traveled distance from startPos.
     // TODO: Add SFX and VFX to kid during different stages of launch (Idle, currently punched, flying, bouncing, landing).
 
-    #region Initialization
-
     private GameObject _mainCamera;
     private Rigidbody2D _kidRigidbody2D;
     private LayerMask _layerGround;
     
-    private float _punchForce;
-    private float _bounceMagnitudeThreshold;
+    [SerializeField] private float punchForce;
+    [SerializeField] private float angle;
     private Vector2 _currentVelocityVector;
 
     private bool _isFlying;
+    private bool _hasLanded;
 
     private void Awake()
     {
         _kidRigidbody2D = GetComponent<Rigidbody2D>();
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
+    
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StartCoroutine(ConvertToVelocityAndLaunch(punchForce, angle));
+        }
 
-    #endregion
-
-    #region Trajectory
+        if (KidHasLanded())
+        {
+            // Play animations, and leave kid lying in the dirt. + Count score / points.
+        }
+    }
 
     private void FixedUpdate()
     {
         if (!_isFlying) { return; }
-        
-        // TODO: add current velocityVector along with its magnitude.
 
         switch (_currentVelocityVector.y)
         {
-            case >= -1:
+            case >= -0.1f:
                 // Play upwards animation
                 throw new NotImplementedException();
             case < -1:
@@ -53,47 +59,37 @@ public class KidTrajectoryScript : MonoBehaviour
         }
     }
 
-    private IEnumerator ConvertToVelocityAndLaunch(float punchForce, float launchAngle)
-    {
+    public IEnumerator ConvertToVelocityAndLaunch(float punch, float launchAngle)
+    { 
         /* var kidTransform = transform;
         var kidDirection = kidTransform.forward;
         var elevationAxis = kidTransform.right;
-         var releaseVector = Quaternion.AngleAxis(launchAngle, elevationAxis) * kidDirection;
-                _kidRigidbody2D.velocity = releaseVector * punchForce;*/
+        var releaseVector = Quaternion.AngleAxis(launchAngle, elevationAxis) * kidDirection;
+        _kidRigidbody2D.velocity = releaseVector * punchForce;*/
         
-        float velx = punchForce * Mathf.Cos(launchAngle * Mathf.Deg2Rad);
-        float vely = punchForce * Mathf.Sin(launchAngle * Mathf.Deg2Rad);
+        float velocityX = punchForce * Mathf.Cos(launchAngle * Mathf.Deg2Rad);
+        float velocityY = punchForce * Mathf.Sin(launchAngle * Mathf.Deg2Rad);
         
         // Figure out set delay for punch to execute.
         yield return new WaitForSeconds(2);
         
-        _kidRigidbody2D.velocity = new Vector2(velx, vely);
+        _kidRigidbody2D.velocity = new Vector2(velocityX, velocityY);
     }
-
-    private void BounceTrajectory(Vector2 velocity)
-    {
-        
-    }
-
-    #endregion
-
-    #region Collision
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!CompareTag("Ground")) return;
-        if (_currentVelocityVector.magnitude > _bounceMagnitudeThreshold)
+        if (_kidRigidbody2D.velocity.x < 1f)
         {
-            _isFlying = false;
-            BounceTrajectory(_currentVelocityVector);
-            // Set new launchPos and initialize new launch.
-        }
-        else
-        {
-            // Land the kid, and stop movement with respective animations.
+            _kidRigidbody2D.velocity = Vector2.zero;
+            KidHasLanded(); 
         }
     }
 
-    #endregion
-    
+    private bool KidHasLanded()
+    {
+        _kidRigidbody2D.velocity = Vector2.zero;
+        return _isFlying = false;
+    }
+  
 }
