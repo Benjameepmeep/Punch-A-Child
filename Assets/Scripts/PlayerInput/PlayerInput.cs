@@ -15,7 +15,7 @@ namespace PlayerInput
 
         private void OnDisable() => _controls.Disable();
 
-        private void Start()
+        /*private void Start()
         {
             SwitchInputToLaunch();
         }
@@ -38,26 +38,21 @@ namespace PlayerInput
             _controls.KidFlying.Disable();
             ResetLevel = true;
         }
+        // ResetLevel Controls:
+        public static bool ResetLevel = false;
+        public static readonly bool LevelHasBeenReset = false;*/
         
         // Player Launch Controls:
         public static bool LockInBar = false;
-        
-        // KidFlying Controls:
-        public static bool UseItem;
-        public static bool FastForward;
-        
-        // ResetLevel Controls:
-        public static bool ResetLevel = false;
-        public static readonly bool LevelHasBeenReset = false;
     
         private void Update()
         {
             LockInBar = _controls.Launch.LockIn.triggered;
             
-            UseItem = _controls.KidFlying.UseItem.triggered;
+            /*UseItem = _controls.KidFlying.UseItem.triggered;
             FastForward = _controls.KidFlying.FastForward.triggered;
             
-            ResetLevel = _controls.ResetStage.ResetButton.triggered;
+            ResetLevel = _controls.ResetStage.ResetButton.triggered;*/
         }
     }
 }

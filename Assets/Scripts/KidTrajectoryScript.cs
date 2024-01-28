@@ -16,7 +16,6 @@ public class KidTrajectoryScript : MonoBehaviour
     // TODO: Add SFX and VFX to kid during different stages of launch (Idle, currently punched, flying, bouncing, landing).
 
     private PlayerInput.PlayerInput _playerInput;
-    private GameObject _mainCamera;
     private Animator _playerAnim;
     private Animator _kidAnim;
     private AnimationCurve _animationCurve;
@@ -38,7 +37,6 @@ public class KidTrajectoryScript : MonoBehaviour
         _kidAnim = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput.PlayerInput>();
         _kidRigidbody2D = GetComponent<Rigidbody2D>();
-        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     private void Start()
@@ -71,9 +69,9 @@ public class KidTrajectoryScript : MonoBehaviour
     {
         if (!_isFlying) { return; }
 
-        if (_kidRigidbody2D.velocityY >= 0)
+        if (_kidRigidbody2D.velocityY > 0 || _kidRigidbody2D.velocityY < 0)
         {
-            
+            _kidAnim.Play("PettyPeteFlying");
         }
     }
     
@@ -100,7 +98,7 @@ public class KidTrajectoryScript : MonoBehaviour
         
         _kidAnim.Play("PettyPeteFlying");
         _isFlying = true;
-        _playerInput.SwitchInputToKidFlying();
+        // _playerInput.SwitchInputToKidFlying();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -114,7 +112,7 @@ public class KidTrajectoryScript : MonoBehaviour
         }
         else
         {
-            _kidAnim.Play("PettyPeteGroundedBackward");
+            _kidAnim.Play("PettyPeteGroundBackward");
             _facingForwardOnGround = true;
         }
         
@@ -128,7 +126,7 @@ public class KidTrajectoryScript : MonoBehaviour
     private IEnumerator InitiateResetControlsAfterDelay()
     {
         yield return new WaitForSeconds(2f);
-        _playerInput.SwitchInputToLevelReset();
+        // _playerInput.SwitchInputToLevelReset();
         yield break;
     }
     
