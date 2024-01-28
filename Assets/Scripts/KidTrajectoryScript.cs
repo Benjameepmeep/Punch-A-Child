@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 
 public class KidTrajectoryScript : MonoBehaviour
@@ -16,6 +17,7 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private PlayerInput.PlayerInput _playerInput;
     private GameObject _mainCamera;
+    private Animator _playerAnim;
     private AnimationCurve _animationCurve;
     private Rigidbody2D _kidRigidbody2D;
     private LayerMask _layerGround;
@@ -30,19 +32,26 @@ public class KidTrajectoryScript : MonoBehaviour
 
     private void Awake()
     {
+        _playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput.PlayerInput>();
         _kidRigidbody2D = GetComponent<Rigidbody2D>();
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
-    
+
+    private void Start()
+    {
+        _playerAnim.Play("PlayerIdle");
+    }
+
     private void Update()
     {
         if (PlayerInput.PlayerInput.LockInBar)
         {
-            LaunchKid(punchForce, angle);
-            // StartCoroutine(ConvertToVelocityAndLaunch(punchForce, angle));
+            var randomPunchForce = Random.Range(5, 50);
+            var randomAngle = Random.Range(25, 65);
+            StartCoroutine(ConvertToVelocityAndLaunch(randomPunchForce, randomAngle));
         }
-
+        
         if (_hasLanded)
         {
             StartCoroutine(InitiateResetControlsAfterDelay());
@@ -60,33 +69,11 @@ public class KidTrajectoryScript : MonoBehaviour
     {
         if (!_isFlying) { return; }
     }
-
-    private void LaunchKid(float punch, float launchAngle)
-    {
-        Debug.Log("Launching");
-        /*var kidTransform = transform;
-        var kidDirection = kidTransform.forward;
-        var elevationAxis = kidTransform.right;
-        var releaseVector = Quaternion.AngleAxis(launchAngle, elevationAxis) * kidDirection;*/
-        
-        float velocityX = punch * Mathf.Cos(launchAngle * Mathf.Deg2Rad);
-        float velocityY = punch * Mathf.Sin(launchAngle * Mathf.Deg2Rad);
-        
-        // Figure out set delay for punch to execute.
-        // _kidRigidbody2D.velocity = releaseVector * punchForce;
-        
-        var kidVelocity = new Vector2(velocityX, velocityY);
-        _kidRigidbody2D.AddForce(kidVelocity, ForceMode2D.Impulse);
-        Debug.Log("Kid Velocity: " + _kidRigidbody2D.velocity);
-        Debug.Log("kidVelocity: " + kidVelocity);
-        
-        _isFlying = true;
-        _playerInput.SwitchInputToKidFlying();
-    }
     
     private IEnumerator ConvertToVelocityAndLaunch(float punch, float launchAngle)
     { 
         Debug.Log("PreparingLaunch");
+        _playerAnim.Play("PlayerPunchAnim");
         /*var kidTransform = transform;
         var kidDirection = kidTransform.forward;
         var elevationAxis = kidTransform.right;
@@ -96,7 +83,7 @@ public class KidTrajectoryScript : MonoBehaviour
         float velocityY = punch * Mathf.Sin(launchAngle * Mathf.Deg2Rad);
         
         // Figure out set delay for punch to execute.
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.4f);
         Debug.Log("Launching");
         // _kidRigidbody2D.velocity = releaseVector * punchForce;
         
