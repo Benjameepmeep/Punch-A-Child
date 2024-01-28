@@ -5,22 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
-    public void Loadlevel(string level)
+    public void Loadlevel()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
 
     }
-    
-    /*public void LoadSceneByName(string sceneName)
-    {
-        //Start a coroutine to wait until the fade is done
-        StartCoroutine(LoadLevel(UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName).buildIndex+1));
-        return;
-    }*/
-    
-    /*private IEnumerator LoadLevel(int levelIndex)
-    {
-        yield return new WaitForSeconds(0.01f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex);
-    }*/
 }
