@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c98ea03118c92b41847cede81865efb
+guid: b4c780d9ac7e0ad43bb259b90d2a0839
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -752031057727112120
-    second: Road_and_sidewalk_0
+      213: 3959557273337811838
+    second: Poster2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,13 +40,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Road_and_sidewalk_0
+      name: Poster2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 4096
-        height: 673
+        width: 2880
+        height: 3840
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84c3d18ccbf3095f0800000000000000
-      internalID: -752031057727112120
+      spriteID: e735d198c5c23f630800000000000000
+      internalID: 3959557273337811838
       vertices: []
       indices: 
       edges: []
@@ -136,15 +136,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Road_and_sidewalk_0: -752031057727112120
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
